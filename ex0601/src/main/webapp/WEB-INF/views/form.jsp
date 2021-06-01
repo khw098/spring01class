@@ -19,6 +19,19 @@
 				 },
 				 success:function(data){
 					 alert("성공 : "+data.id);
+					 var html="";
+					 html = html + "<tr>";
+					 html = html + "<td>"+data.num+"</td>";
+					 html = html + "<td>"+data.id+"</td>";
+					 html = html + "<td>"+data.pw+"</td>";
+					 html = html + "<td>"+data.name+"</td>";
+					 html = html + "<td>"+data.nicName+"</td>";
+					 html = html + "</tr>";
+					 $("#member_table").prepend(html); 
+					 $("#id").val("");
+					 $("#pw").val("");
+					 $("#name").val("");
+					 $("#nicName").val("");
 				 },
 				 error:function(){
 					 alert("실패");
@@ -57,7 +70,7 @@
 	        <th>이름</th>
 	        <th>닉네임</th>
 	      </tr>
-	      <tbody>
+	      <tbody id="member_table">
 		      <tr>
 		        <td>1</td>
 		        <td>admin</td>
