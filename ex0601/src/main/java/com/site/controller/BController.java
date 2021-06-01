@@ -9,6 +9,9 @@ import com.site.vo.MemberVo;
 @Controller
 public class BController {
 
+	//static int count=0;
+	
+	
 	@RequestMapping("/main")
 	public String main() {
 		return "main";
@@ -24,6 +27,9 @@ public class BController {
 	public MemberVo formOk(MemberVo memberVo) {
 		System.out.println("데이터 확인 : "+memberVo.getId());
 		//데이터 db저장
+		//BController.count++;
+		//memberVo.setNum(BController.count);
+		
 		//form.jsp 데이터전달
 		
 		
