@@ -21,4 +21,6 @@ public interface BoardService {
 
 	void boardReplyDo(Mvc_board mvc_board);
 
+	Map<String, Object> boardListSearch(int page, String category, String search);
+
 }

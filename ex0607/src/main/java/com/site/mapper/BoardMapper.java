@@ -13,6 +13,10 @@ public interface BoardMapper {
 	List<Mvc_board> selectboardListAll(int startrow, int endrow);
 	int selectBoardCount();
 
+	// 검색리스트
+	List<Mvc_board> selectBoardListSearch(int startrow, int endrow, String search);
+	int selectBoardSearchCount(String search);
+	
 	// 뷰페이지 
 	Mvc_board selectboardview(int bno);
 
