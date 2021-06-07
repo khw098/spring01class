@@ -7,7 +7,7 @@ import com.site.vo.Mvc_board;
 
 public interface BoardService {
 
-	Map<String,Object> boardListAll(int listPage);
+	Map<String,Object> boardListAll(int page);
 
 	Mvc_board boardview(int bno);
 

@@ -75,17 +75,17 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/list") //리스트페이지 호출
-	public String list(@RequestParam("page") @Nullable int listPage, Model model) {
+	public String list(@RequestParam @Nullable String page, Model model) {
+		int listPage = 0;
+		if(page == null) { // 넘어온 데이터가 없을때
+			listPage = 1; // 1로 셋팅
+		}else {
+			listPage = Integer.parseInt(page);
+		}
 		
-		System.out.println("listPage : "+listPage);
-//		int page = 0; //변수선언
-//		if(listPage==0) { // 넘어온 데이터가 없을때
-//			page = 1; // 1로 셋팅
-//		}else {
-//			page = listPage; // 넘어온 데이터로 셋팅
-//		}
-//		Map<String,Object> map = boardService.boardListAll(page);
-//		model.addAttribute("map",map);
+		
+		Map<String,Object> map = boardService.boardListAll(listPage);
+		model.addAttribute("map",map);
 		return "/list";
 	}
 	
