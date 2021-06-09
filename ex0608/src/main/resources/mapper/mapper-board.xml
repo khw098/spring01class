@@ -63,11 +63,6 @@
 	</select>
 	
 	
-	
-	
-	
-	
-	
 	<!-- 뷰페이지 호출 -->
 	<select id="selectboardview" resultType="com.site.vo.Mvc_board">
 	   select * from mvc_board where bno=#{bno}
@@ -85,10 +80,10 @@
 			(select rownum rnum,a.* from
 			(select * from 
 			mvc_board order by bgroup desc, bstep asc) a)
-			where bno=#{bno})+1
+			where bno=#{bno})-1
 		]]>
 	</select>
-	<!-- 이전글 -->
+	<!-- 다음글 -->
 	<select id="selectBoardViewNext" resultType="com.site.vo.Mvc_board">
 	    <![CDATA[
 		    select * from
@@ -100,7 +95,7 @@
 			(select rownum rnum,a.* from
 			(select * from 
 			mvc_board order by bgroup desc, bstep asc) a)
-			where bno=#{bno})-1
+			where bno=#{bno})+1
 		]]>
 	</select>
 	
