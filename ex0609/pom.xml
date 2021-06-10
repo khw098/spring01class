@@ -39,14 +39,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- Oracle Driver -->
-		<dependency>
-			<groupId>ojdbc</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>6</version>
-			<scope>system</scope>
-			<systemPath>C:/workspace/ex0602/src/main/webapp/WEB-INF/lib/ojdbc6_g.jar</systemPath>
-		</dependency>
+		
 
 		<!-- jsp -->
 		<dependency>
@@ -58,6 +51,15 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
+		</dependency>
+		
+		<!-- Oracle Driver -->
+		<dependency>
+			<groupId>ojdbc</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>6</version>
+			<scope>system</scope>
+			<systemPath>C:/workspace/ex0602/src/main/webapp/WEB-INF/lib/ojdbc6_g.jar</systemPath>
 		</dependency>
 		
 		<!-- mybatis -->
