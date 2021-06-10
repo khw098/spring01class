@@ -22,7 +22,7 @@
     <h1>관리자 글쓰기</h1>
     <hr>
 
-    <form action="writeDo" name="write" method="post">
+    <form action="writeDo" name="write" method="post" enctype="multipart/form-data">
       <table>
         <colgroup>
           <col width="15%">

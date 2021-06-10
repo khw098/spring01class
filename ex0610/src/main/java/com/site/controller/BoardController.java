@@ -1,5 +1,7 @@
 package com.site.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.BoardService;
 import com.site.vo.Mvc_board;
@@ -22,6 +26,11 @@ public class BoardController {
 	@Autowired
 	BoardService boardService; 
 	
+	
+	@RequestMapping("/write2") //파일 업로드 호출
+	public String write2() {
+		return "write2";
+	}
 	
 	
 				
@@ -46,9 +55,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/modifyDo") //수정저장 호출
-	public String modifyDo(Mvc_board mvc_board) {
+	public String modifyDo(Mvc_board mvc_board,@RequestPart MultipartFile file) {
 		//작성자-session,제목,내용
-		boardService.boardModifyDo(mvc_board);
+		boardService.boardModifyDo(mvc_board,file);
 		return "redirect:/view?bno="+mvc_board.getBno();
 	}
 	@RequestMapping("/delete") //게시물 삭제
@@ -63,10 +72,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/writeDo") //쓰기저장 호출
-	public String writeDo(Mvc_board mvc_board) {
-		//작성자-session,제목,내용
-		System.out.println("test : "+mvc_board.getUserid());
-		boardService.boardWriteDo(mvc_board);
+	public String writeDo(Mvc_board mvc_board,@RequestPart MultipartFile file) {
+		//데이터,파일첨부에서 넘어온 파일명을 매개변수로 보냄.
+		boardService.boardWriteDo(mvc_board,file);
 		
 		return "redirect:/list";
 	}

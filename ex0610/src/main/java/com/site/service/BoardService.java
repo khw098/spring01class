@@ -3,6 +3,8 @@ package com.site.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.site.vo.Mvc_board;
 
 public interface BoardService {
@@ -12,11 +14,11 @@ public interface BoardService {
 
 	Map<String,Object> boardview(int bno);
 
-	void boardWriteDo(Mvc_board mvc_board);
+	void boardWriteDo(Mvc_board mvc_board,MultipartFile file);
 
 	Mvc_board boardModify(int bno);
 
-	void boardModifyDo(Mvc_board mvc_board);
+	void boardModifyDo(Mvc_board mvc_board,MultipartFile file);
 
 	void boardDelete(int bno);
 

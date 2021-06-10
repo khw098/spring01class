@@ -1,11 +1,14 @@
 package com.site.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.site.mapper.BoardMapper;
 import com.site.vo.Mvc_board;
@@ -127,8 +130,28 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override  //쓰기 저장
-	public void boardWriteDo(Mvc_board mvc_board) {
+	public void boardWriteDo(Mvc_board mvc_board,MultipartFile file) {
+		
+		// 파일저장위치
+		String fileUrl = "C:/Users/3실습실/git/spring01class/ex0610/src/main/resources/static/upload/";
+		// - 파일이름중복방지
+		long time = System.currentTimeMillis();
+		String uploadFileName = time+"_"+file.getOriginalFilename(); 
+		// - 파일저장
+		File f = new File(fileUrl+uploadFileName); //
+		// - 파일전송
+		try {
+			file.transferTo(f);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// 파일이름을 Vo저장
+		mvc_board.setFileName(uploadFileName);
+		// db저장
 		boardMapper.insertBoardWriteDo(mvc_board);
+		
+		System.out.println("db저장 전 uploadFileName : "+uploadFileName);
 	}
 
 	@Override //수정페이지 호출
@@ -138,7 +161,28 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override //수정 저장
-	public void boardModifyDo(Mvc_board mvc_board) {
+	public void boardModifyDo(Mvc_board mvc_board,MultipartFile file) {
+		
+		//파일이 변경되었을때
+		if(file.getSize() != 0) {
+			// 파일저장위치
+			String fileUrl = "C:/Users/3실습실/git/spring01class/ex0610/src/main/resources/static/upload/";
+			// - 파일이름중복방지
+			long time = System.currentTimeMillis();
+			String uploadFileName = time+"_"+file.getOriginalFilename(); 
+			// - 파일저장
+			File f = new File(fileUrl+uploadFileName); //
+			// - 파일전송
+			try {
+				file.transferTo(f);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// 파일이름을 Vo저장
+			mvc_board.setFileName(uploadFileName);
+		}
+		
 		boardMapper.updateBoardModifyDo(mvc_board);
 		
 	}
@@ -155,6 +199,7 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.insertBoardReplyDo(mvc_board);
 		
 	}
-
+	
+	
 
 }

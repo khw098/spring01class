@@ -14,7 +14,7 @@
   <script type="text/javascript">
     function delete_check(){
     	if(confirm("삭제하시겠습니까?")){
-    		location.href="./delete?bno=${mvc_board.bno}";
+    		location.href="./delete?bno="+${mvc_board.bno};
     	}else{
     		return false;
     	}
@@ -47,6 +47,11 @@
         <td colspan="3" class="article">${map.mvc_board.bcontent }</td>
       </tr>
       <tr>
+        <td colspan="3" class="article">
+          <img src="http://localhost:8000/upload/${map.mvc_board.fileName}">
+        </td>
+      </tr>
+      <tr>
         <td colspan="3"><strong>다음글</strong> <span class="separator">|</span> [공지] ${map.boardPre.btitle }</td>
       </tr>
       <tr>
@@ -55,9 +60,9 @@
     </table>
 
     <a href="./list"><div class="list">목록</div></a>
-    <a href="#" onclick="delete_check()"><div class="list">삭제</div></a>
-    <a href="./modify?bno=${mvc_board.bno}"><div class="list">수정</div></a>
-    <a href="./reply?bno=${mvc_board.bno}"><div class="list">답변달기</div></a>
+    <div class="list" onclick="delete_check()">삭제</div>
+    <a href="./modify?bno=${map.mvc_board.bno}"><div class="list">수정</div></a>
+    <a href="./reply?bno=${map.mvc_board.bno}"><div class="list">답변달기</div></a>
   </section>
 </body>
 </html>

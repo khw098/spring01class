@@ -116,7 +116,8 @@
 	
 	<!-- 수정저장 -->
 	<update id="updateBoardModifyDo">
-	   update mvc_board set btitle=#{btitle},bcontent=#{bcontent},bdate=sysdate
+	   update mvc_board set btitle=#{btitle},bcontent=#{bcontent},bdate=sysdate,
+	   filename=#{fileName}  
 	   where bno=#{bno}
 	</update>
 	
@@ -133,7 +134,7 @@
 	<!-- 글쓰기 저장 -->
 	<insert id="insertBoardWriteDo">
 	   insert into mvc_board values(board_seq.nextval,#{userid},
-	   #{btitle},#{bcontent},sysdate,0,board_seq.currval,0,0)
+	   #{btitle},#{bcontent},sysdate,0,board_seq.currval,0,0,#{fileName})
 	</insert>
 	
 	<!-- 답글 저장 -->

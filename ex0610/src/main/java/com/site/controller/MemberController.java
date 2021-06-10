@@ -25,6 +25,10 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
+	@RequestMapping("/member01")
+	public String member01() {
+		return "/member01";
+	}
 	@RequestMapping("/index")
 	public String index() {
 		return "/index";
